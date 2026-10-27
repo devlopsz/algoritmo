@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="">
+
+    <title>Algoritmo</title>
+
+    <!-- Fonte serifada semelhante à Anthropic Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* =========================================
+           CONFIGURAÇÕES GERAIS
+        ========================================= */
+
+        :root {
+            /*
+             * TAMANHO DA LETRA DO TEXTO:
+             * Altere 19px para 21px, 22px, 24px etc.
+             */
+            --texto-tamanho: 19px;
+
+            /* Espaçamento entre as linhas do texto */
+            --texto-altura-linha: 1.85;
+
+            /* Cor do texto */
+            --cor-texto: #111111;
+
+            /* Fundo */
+            --cor-fundo: #ffffff;
+
+            /* Fonte principal e alternativas */
+            --fonte-serifa:
+                "Anthropic Serif",
+                "Source Serif 4",
+                Georgia,
+                serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background: var(--cor-fundo);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            font-family: var(--fonte-serifa);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .oculto {
+            display: none !important;
+        }
+
+
+        /* =========================================
+           PÁGINA INICIAL
+           Layout inspirado na imagem enviada
+        ========================================= */
+
+        #pagina-inicial {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            height: 100svh;
+            min-height: 480px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        /* Pequeno ponto preto */
+
+        .ponto {
+            position: absolute;
+            top: 21.25%;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #111111;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Título centralizado */
+
+        .titulo-inicial {
+            position: absolute;
+            top: 35.8%;
+            left: 50%;
+            margin: 0;
+            padding: 0;
+            transform: translate(-50%, -50%);
+
+            font-family: var(--fonte-serifa);
+            font-size: clamp(36px, 9.3vw, 72px);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.035em;
+            white-space: nowrap;
+            color: #111111;
+        }
+
+        /* Botão LER AGORA */
+
+        .botao-ler {
+            position: absolute;
+            top: 49.3%;
+            left: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: min(36vw, 280px);
+            min-width: 136px;
+            height: clamp(44px, 5.3vh, 84px);
+
+            padding: 0 12px;
+            transform: translate(-50%, -50%);
+
+            border: 1.5px solid #777777;
+            border-radius: 0;
+            background: #ffffff;
+
+            color: #111111;
+            font-family: var(--fonte-serifa);
+            font-size: clamp(15px, 3.8vw, 28px);
+            font-weight: 400;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+
+            transition:
+                background-color 180ms ease,
+                border-color 180ms ease,
+                transform 180ms ease;
+        }
+
+        .botao-ler:hover {
+            border-color: #111111;
+            background: #fafafa;
+        }
+
+        .botao-ler:active {
+            transform: translate(-50%, -50%) scale(0.98);
+        }
+
+        .botao-ler:focus-visible,
+        .voltar:focus-visible {
+            outline: 2px solid #111111;
+            outline-offset: 5px;
+        }
+
+
+        /* =========================================
+           PÁGINA DO TEXTO
+        ========================================= */
+
+        #pagina-leitura {
+            min-height: 100vh;
+            min-height: 100svh;
+            width: 100%;
+            background: #ffffff;
+        }
+
+        /*
+         * A largura máxima evita linhas compridas demais
+         * em tablets e computadores.
+         */
+        .conteudo-leitura {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 32px 25px 90px;
+        }
+
+        /* Link discreto para voltar à página inicial */
+
+        .voltar {
+            display: inline-block;
+            margin: 0 0 28px;
+            padding: 5px 0;
+
+            color: #555555;
+            font-family: var(--fonte-serifa);
+            font-size: 15px;
+            font-weight: 400;
+            text-decoration: none;
+
+            transition: color 180ms ease;
+        }
+
+        .voltar:hover {
+            color: #111111;
+        }
+
+        /* Texto da carta */
+
+        .texto-carta {
+            margin: 0;
+            padding: 0;
+
+            font-family: var(--fonte-serifa);
+            font-size: var(--texto-tamanho);
+            font-weight: 400;
+            line-height: var(--texto-altura-linha);
+            letter-spacing: 0;
+
+            text-align: left;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .texto-carta p {
+            margin: 0 0 1.5em;
+            padding: 0;
+        }
+
+        .texto-carta p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =========================================
+           AJUSTES PARA CELULARES PEQUENOS
+        ========================================= */
+
+        @media (max-width: 380px) {
+            .conteudo-leitura {
+                padding-right: 21px;
+                padding-left: 21px;
+            }
+
+            .texto-carta {
+                font-size: var(--texto-tamanho);
+            }
+        }
+
+        /* =========================================
+           AJUSTES PARA TELAS GRANDES
+        ========================================= */
+
+        @media (min-width: 768px) {
+            .conteudo-leitura {
+                padding-top: 48px;
+                padding-right: 32px;
+                padding-left: 32px;
+            }
+
+            .voltar {
+                margin-bottom: 34px;
+            }
+        }
+
+        /* Respeita a preferência por menos animações */
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         TELA 1: PÁGINA INICIAL
+    ========================================== -->
+
+    <main id="pagina-inicial">
+
+        <div class="ponto" aria-hidden="true"></div>
+
+        <h1 class="titulo-inicial">
+            Algoritmo
+        </h1>
+
+        <a
+            class="botao-ler"
+            href="#ler"
+            aria-label="Ler agora"
+        >
+            LER AGORA
+        </a>
+
+    </main>
+
+
+    <!-- =========================================
+         TELA 2: PÁGINA DE LEITURA
+    ========================================== -->
+
+    <main id="pagina-leitura" class="oculto">
+
+        <article class="conteudo-leitura">
+
+            <a class="voltar" href="#" aria-label="Voltar à página inicial">
+                ← Voltar
+            </a>
+
+            <div class="texto-carta" lang="pt-BR">
+
+                <p>
+                    Meu maior erro seria pensar na distância, tanto por minha
+                    parte, tanto pela sua parte. Não consigo me afastar, seja
+                    o tempo que for. Cada segundo, cada minuto que passa, eu
+                    anseio por mais um tempo do seu lado, minutos, segundos,
+                    uma frase, um beijo, um cheiro, um doce toque, um olhar,
+                    seja o tempo que for.
+                </p>
+
+                <p>
+                    Nos lugares habituais, quando seu formoso corpo passeia ao
+                    meu lado exalando seu cheiro e sua presença, me sinto
+                    enfermo, fico ansioso, nervoso, esperando um simples
+                    momento que transmita teu carinho em mim, e sim, pra minha
+                    enfermidade dependente, você meu amor, é a cura. Mais cedo
+                    pensei, que estupidez seria me sentir assim, mas não digo
+                    sobre meus sentimentos serem estúpidos, sem sentido ou
+                    que eu seja tão estúpido de sentir isso por você, mas sim,
+                    sobre me sentir completamente inepto de ficar longe de
+                    você, e mesmo sabendo disso, cometer novamente a estupidez
+                    de tentar.
+                </p>
+
+                <p>
+                    Eu tenho pensado naqueles dias onde olhei pros seus olhos
+                    pela primeira vez, onde me afundei na tua atitude, que me
+                    deixou paralisado sem saber o que falar pra você,
+                    pensamento no qual me leva a todos esses anos que passei
+                    ao seu lado, edificando um lar aconchegante e confortável
+                    em todos os sentidos. Essas memórias e lembranças me
+                    deixam extasiado, mesmo que momentos simples, como
+                    adormecer nas suas pernas, risadas com piadas internas,
+                    viajar ou passar o tempo descansando na tua presença.
+                    Essa sensação me traz o desejo de continuar plantando
+                    esses momentos com você, dia após dia, para posteriormente
+                    cultivá-los.
+                </p>
+
+                <p>
+                    Quero que se passem os dias e que veja, meu doce desejo de
+                    estar do seu lado, todos os dias da minha existência, a
+                    mesma na qual se resume a ti. Às vezes me pego olhando pro
+                    nada pensando nos seus mínimos detalhes e atitudes que
+                    afloram cada vez mais esse desejo, minha mente revive e
+                    passa pelo seu rosto por completo, o mesmo rosto que eu
+                    agradeço por ter a honra de olhar acordando do meu lado
+                    todos os dias, o mesmo rosto que porta o par de olhos mais
+                    hipnotizante que eu já tive o prazer de olhar, esses
+                    olhos... que me capturam toda vez que tento focar
+                    minuciosamente no que você diz pra mim, mas seus olhos
+                    sabem brincar comigo, e me jogam diretamente pra sua boca,
+                    seus lábios perfeitamente desenhados para me desconectar
+                    de tudo que tem ao redor de mim, que desliga todas as
+                    atividades do meu cérebro, que me faz desejar mais e mais
+                    de você, principalmente quando esses mesmos lábios se
+                    estendem em um sorriso para minhas brincadeiras com você.
+                    Que me expurgue, o suficiente para ser digno dessa
+                    sensação, de tudo que me transmite.
+                </p>
+
+                <p>
+                    Meu maior erro seria pensar na distância, tanto por minha
+                    parte, tanto pela sua parte.
+                </p>
+
+            </div>
+
+        </article>
+
+    </main>
+
+
+    <!-- =========================================
+         NAVEGAÇÃO ENTRE AS DUAS TELAS
+    ========================================== -->
+
+    <script>
+        const paginaInicial = document.getElementById("pagina-inicial");
+        const paginaLeitura = document.getElementById("pagina-leitura");
+
+        function atualizarPagina() {
+            const estaLendo = window.location.hash === "#ler";
+
+            paginaInicial.classList.toggle("oculto", estaLendo);
+            paginaLeitura.classList.toggle("oculto", !estaLendo);
+
+            document.title = estaLendo ? "Algoritmo — Leitura" : "Algoritmo";
+
+            /*
+             * Sempre começa no topo ao abrir uma das telas.
+             */
+            window.scrollTo(0, 0);
+        }
+
+        /*
+         * Atualiza a tela ao clicar em LER AGORA,
+         * em Voltar ou nos botões de navegação do navegador.
+         */
+        window.addEventListener("hashchange", atualizarPagina);
+
+        /*
+         * Define a tela correta ao abrir ou recarregar o site.
+         */
+        atualizarPagina();
+    </script>
+
+</body>
+</html>
