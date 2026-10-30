@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#f5f3ee">
     <meta name="description" content="">
 
     <title>Algoritmo</title>
@@ -290,10 +290,72 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+
+        /* =========================================
+           TEMA OFF-WHITE / PRETO E CONTROLES
+        ========================================= */
+
+        :root {
+            --cor-fundo: #f5f3ee;
+            --cor-texto: #111111;
+            --cor-borda: #777777;
+        }
+
+        :root[data-tema="escuro"] {
+            --cor-fundo: #000000;
+            --cor-texto: #ffffff;
+            --cor-borda: #ffffff;
+        }
+
+        html,
+        body,
+        #pagina-inicial,
+        #pagina-leitura {
+            background: var(--cor-fundo) !important;
+            color: var(--cor-texto);
+            transition: background-color 180ms ease, color 180ms ease;
+        }
+
+        .titulo-inicial,
+        .texto-carta {
+            color: var(--cor-texto) !important;
+        }
+
+        .ponto {
+            background: var(--cor-texto) !important;
+        }
+
+        .botao-ler {
+            background: var(--cor-fundo) !important;
+            color: var(--cor-texto) !important;
+            border-color: var(--cor-borda) !important;
+        }
+
+        .botao-ler:hover {
+            background: var(--cor-fundo) !important;
+            border-color: var(--cor-texto) !important;
+        }
+
+        .voltar {
+            color: var(--cor-texto) !important;
+        }
+
+        .titulo-capitulo {
+            margin: 0 0 28px;
+            color: var(--cor-texto);
+            font-family: var(--fonte-serifa);
+            font-size: 28px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+
     </style>
 </head>
 
 <body>
+
 
     <!-- =========================================
          TELA 1: PÁGINA INICIAL
@@ -312,7 +374,7 @@
             href="#ler"
             aria-label="Ler agora"
         >
-            LER AGORA
+            LER AGORA!
         </a>
 
     </main>
@@ -324,11 +386,9 @@
 
     <main id="pagina-leitura" class="oculto">
 
-        <article class="conteudo-leitura">
+        <article id="capitulo-1" class="conteudo-leitura">
 
-            <a class="voltar" href="#" aria-label="Voltar à página inicial">
-                ← Voltar
-            </a>
+            <h2 class="titulo-capitulo">Prólogo</h2>
 
             <div class="texto-carta" lang="pt-BR">
 
@@ -397,9 +457,157 @@
                     parte, tanto pela sua parte.
                 </p>
 
+                <h2 class="titulo-capitulo">Dedicatória</h2>
+
+                <p>
+                    Minhas palavras são lançadas a fora, capazes de tocar seus 
+                    ouvidos, mas como eu queria que tocassem esses seus lábios. 
+                    Um meio interessante seria escrever e desejar profundamente 
+                    que beije minhas palavras nessa carta, com o mesmo amor e 
+                    carinho que despeja sobre meus lábios, o mesmo que eu despejo 
+                    em teu pescoço, descendo em ansiedade para tua clavícula, já 
+                    visualizando meu amor sobre os teus seios.
+                </p>
+
+                <p>
+                    Como morto, nossos interesses, entre listras e cores, a beleza 
+                    que somente nossos olhos enxergam em meio a tantos vivos sem alma. 
+                </p>
+                
+                <p>
+                    Verdades sejam ditas, já que sincero hei de ser. O brilho do teu 
+                    olhar ilumina toda minha caminhada, em uma única via, onde sei 
+                    exatamente como e onde pisar, sua boca realça todos as minhas 
+                    qualidades e defeitos a melhorar, teu cabelo cai em teu semblante 
+                    distraído e me desperta o interesse de nunca mais desviar o meu 
+                    olhar de cada detalhe seu, o seu corpo, esculpido, desenhado, em 
+                    qualquer proporção, chama a atenção por onde passa, nos mínimos 
+                    detalhes, mais do que uma beleza única, no conjunto, você... você 
+                    é uma divindade. Sobrenatural, além desse mundo, desses padrões. 
+                </p>
+
+                <p>
+                    Se alguém porventura ousar em falar algo que contraria tudo que 
+                    relatei nessa carta, algo negativo, algo que inferioriza sua imagem, 
+                    nunca acredite nos vivos.
+                </p>
+
             </div>
 
         </article>
+
+        <!-- CAPÍTULO 2: substitua o título e os parágrafos pelo seu texto -->
+        <article id="capitulo-2" class="conteudo-leitura oculto">
+            <h2 class="titulo-capitulo">Por Agora</h2>
+
+            <div class="texto-carta" lang="pt-BR">
+                <p>
+                    A primeira vez, assim como o momento em que pude te ver subir uma escadaria, 
+                    com aquele peso na barriga, com fome de te conhecer, assim como um momento 
+                    íntimo, mas simples, compartilhado, assim como o teu toque molhado e macio 
+                    que senti na minha boca. Essa é a primeira vez que escrevo algo parecido, 
+                    será a única, a não ser que a leitura agrade muito. Sinto que deveria falar 
+                    sobre isso, pois quero que saiba de forma mais profunda o que vem na minha 
+                    mente nesses específicos momentos, pelo menos... por agora.
+                </p>
+
+                <p>
+                    Antes, me sentia estranho, aos olhos de muitos fui julgado tal como, porque 
+                    todo tipo de atitude ou visão lasciva me causava desinteresse imediato, onde 
+                    me vi preferindo outros “passatempos”. Até o momento em que tive o privilégio 
+                    de te ver, com os olhos que nunca vieram a enxergar daquela forma antes, os 
+                    mesmos que, hoje tem a mesma curiosidade, o mesmo desejo.
+                </p>
+
+                <p>
+                    A mulher em seu estado mais íntimo, a mesma que estivera comigo por anos, em 
+                    uma noite apareceu, e, no mesmo instante, o meu desejo acumulado surgiu como 
+                    que por encanto, pois após ter castigado meu corpo com a distância, ele pedia 
+                    por você incessantemente. Assim cada detalhe retorna me alimentando cada vez 
+                    mais, com aquela sua blusa que lhe deixava os ombros de fora, destacando seu 
+                    detalhe mais leve e atraente, tive a visão nítida de que a blusa se abriria 
+                    a qualquer instante, deixando-a totalmente nua, e também, lembrando que a pele 
+                    de seu corpo seria tão macia e brilhante quanto um cetim. Então, tive de me 
+                    conter. Ainda não podia acreditar que novamente você, uma linda mulher, 
+                    estivesse realmente se oferecendo a mim, assim como me ofereci a você, 
+                    partilhando os mesmos sentimentos. 
+                </p>
+
+                <p>
+                    Cada vez que tenho o privilégio de te ver vulnerável e entregue de forma intima 
+                    para mim, o ciclo se repete, eu sinto as mesmas atrações que nunca senti, reparo 
+                    nos mesmos detalhes que nunca, repito, nunca dei a atenção a outra mulher, 
+                    detalhes que me despertam o mesmo olhar que apareceu no dia em que me apresentou 
+                    esse lado íntimo pela primeira vez. Uma mulher extraordinariamente bela. Seus 
+                    olhos característicos e brilhantes que abrem portas para suas emoções mais lindas 
+                    e expressivas, sua boca cintila me pedindo constantemente para beija-la, sua pele 
+                    reflete a luz. O teu corpo perfeitamente escultural, tem as linhas bem definidas 
+                    das magras, amaciadas pelas curvas necessárias nos lugares certos. A cintura fina 
+                    aumenta a proeminência dos seios e do seu quadril que me olha pedindo pra aperta-lo. 
+                    Suas costas parecem as de uma bailarina, gentis, delicadas, e cada ondulação destaca 
+                    mais a generosidade de seus quadris. Minha mente pede os seus lábios macios e levemente 
+                    molhados, me pede para colar minha boca nesses ombros nus tão perfeitos. Nada pode 
+                    ser mais macio do que sua pele.  
+                </p>
+
+                <p>
+                    Me perco deliberadamente na tentação de sempre puxar a sua frágil camisa com a boca 
+                    e desnudar os seus seios que parecem querer saltar de sob o tecido... Que vontade 
+                    de a despir imediatamente. Imagino repentinamente seu corpo, que aparece como o de 
+                    Vênus, nua, saindo do mar. Maldito desejo de deitar contigo na cama, e nem por um 
+                    instante parar de te beijar em todas as partes possíveis que permitir, ceder à 
+                    deliciosa tentação de explorar e tocar cada canto de seu corpo, nos mínimos detalhes, 
+                    como os seus seios que me atordoam nos pequenos detalhes tentadores... tão firmes, 
+                    mas tão macios, e com os bicos cor-de-rosa, que, casam perfeitamente com minha língua, 
+                    deixando minha boca se encher de saliva, ficando cada vez mais ávida, querendo 
+                    morder teu abdômen, debruçar meu nariz no teu pescoço, inalando, deliciando, o perfume 
+                    maravilhoso que se desprende desse seu corpo, lamber sua clavícula delicada, beijar 
+                    cada pedaço da sua barriga, escorregando cada vez mais... E quando finalmente toco 
+                    com minha boca entre suas pernas, me encontro em uma proximidade absoluta, sentir 
+                    seu cheiro, seu amor se derramando sobre minha língua, se misturando com minha saliva 
+                    e cada vez mais me unindo com sua excitação. Tão deliciosa, essa sensação, sentir 
+                    você estremecer de prazer enquanto minha boca se derrama na sua, como se nós estivéssemos 
+                    nos tornando vorazmente famintos um da carne do outro, e assim, nossas bocas se fundem, 
+                    e nossas línguas se misturam com sofreguidão. 
+                </p>
+
+                <p>
+                    Faça-me sentir magneticamente atraído a tocar de novo sua carne, com a boca ou as 
+                    mãos, ou com todo o corpo. Me esfregar com o corpo inteiro de encontro ao seu, sentindo 
+                    unicamente o nosso intenso prazer característico com aquela leve fricção. Faça-me cair 
+                    ao seu lado e tocar sua boca como se fosse cego e quisesse descobrir-lhe o formato dos 
+                    lábios, do nariz, a textura de sua pele, o comprimento de seus cabelos. Deixe meus 
+                    dedos fazerem explorações delicadas, leves e calmas, com as nossas mesmas sensações 
+                    de dois corpos se descobrindo de novo, repetidamente. De tantas carícias, me deixe 
+                    drogado. Me faça sentir seus gestos passando a serem lentos, como em um sonho, as mãos 
+                    ficando pesadas, as bocas não mais se fechando. 
+                </p>
+
+                <p>
+                    Me permita sentir o seu amor fluir do seu interior, mergulhar demoradamente os dedos 
+                    em você, com as suas pernas passadas sobre minhas pernas. 
+                </p>
+
+                <p>
+                    Quando te penetrar, permita-me ver entrando em você, e ver cada expressão sair desse 
+                    lindo rosto. Você, da mesma forma, também vendo tudo. Nós dois observando nossos corpos 
+                    ondulando juntos, procurando o clímax. Pelo menos... por agora. 
+                </p>
+            </div>
+        </article>
+
+        <!-- CAPÍTULO 3: substitua o título e os parágrafos pelo seu texto -->
+        <article id="capitulo-3" class="conteudo-leitura oculto">
+            <h2 class="titulo-capitulo">Em Breve</h2>
+
+            <div class="texto-carta" lang="pt-BR">
+                <p>
+                    Em breve, quer mais??? Eu te amo! 
+                </p>
+
+            </div>
+        </article>
+
 
     </main>
 
@@ -411,30 +619,126 @@
     <script>
         const paginaInicial = document.getElementById("pagina-inicial");
         const paginaLeitura = document.getElementById("pagina-leitura");
+        const capitulos = [
+            document.getElementById("capitulo-1"),
+            document.getElementById("capitulo-2"),
+            document.getElementById("capitulo-3")
+        ];
+        const metaTema = document.querySelector('meta[name="theme-color"]');
+
+        let capituloAtual = -1;
+
+        /* Alterna o site inteiro entre off-white e preto. */
+        function atualizarTema(escuro) {
+            document.documentElement.dataset.tema = escuro ? "escuro" : "claro";
+            metaTema.setAttribute("content", escuro ? "#000000" : "#f5f3ee");
+        }
+
+        /* Três cliques/toques rápidos em qualquer área alternam o tema. */
+        let quantidadeCliques = 0;
+        let temporizadorCliques;
+        const intervaloEntreCliques = 650;
+
+        document.addEventListener("click", () => {
+            quantidadeCliques += 1;
+
+            if (quantidadeCliques === 3) {
+                const estaEscuro = document.documentElement.dataset.tema === "escuro";
+                atualizarTema(!estaEscuro);
+                quantidadeCliques = 0;
+                clearTimeout(temporizadorCliques);
+                return;
+            }
+
+            clearTimeout(temporizadorCliques);
+            temporizadorCliques = setTimeout(() => {
+                quantidadeCliques = 0;
+            }, intervaloEntreCliques);
+        });
+
+        function indicePelaRota() {
+            const rota = window.location.hash;
+            if (rota === "#capitulo-2") return 1;
+            if (rota === "#capitulo-3") return 2;
+            if (rota === "#ler" || rota === "#capitulo-1") return 0;
+            return -1;
+        }
+
+        function rotaDoCapitulo(indice) {
+            if (indice === 0) return "#ler";
+            return `#capitulo-${indice + 1}`;
+        }
 
         function atualizarPagina() {
-            const estaLendo = window.location.hash === "#ler";
+            capituloAtual = indicePelaRota();
+            const estaLendo = capituloAtual >= 0;
 
             paginaInicial.classList.toggle("oculto", estaLendo);
             paginaLeitura.classList.toggle("oculto", !estaLendo);
 
-            document.title = estaLendo ? "Algoritmo — Leitura" : "Algoritmo";
+            capitulos.forEach((capitulo, indice) => {
+                capitulo.classList.toggle("oculto", indice !== capituloAtual);
+            });
 
-            /*
-             * Sempre começa no topo ao abrir uma das telas.
-             */
+            document.title = !estaLendo
+                ? "Algoritmo"
+                : `Artifício ${capituloAtual + 1}`;
+
             window.scrollTo(0, 0);
         }
 
-        /*
-         * Atualiza a tela ao clicar em LER AGORA,
-         * em Voltar ou nos botões de navegação do navegador.
-         */
+        function avancarCapitulo() {
+            if (capituloAtual >= 0 && capituloAtual < capitulos.length - 1) {
+                window.location.hash = rotaDoCapitulo(capituloAtual + 1);
+            }
+        }
+
+        function voltarCapitulo() {
+            if (capituloAtual > 0) {
+                window.location.hash = rotaDoCapitulo(capituloAtual - 1);
+            } else if (capituloAtual === 0) {
+                window.location.hash = "#inicio";
+            }
+        }
+
         window.addEventListener("hashchange", atualizarPagina);
 
         /*
-         * Define a tela correta ao abrir ou recarregar o site.
+         * Navegação por gesto: arrastar para a esquerda avança um capítulo;
+         * arrastar para a direita volta um capítulo. Gestos verticais rolam normalmente.
          */
+        let inicioToqueX = 0;
+        let inicioToqueY = 0;
+
+        document.addEventListener("touchstart", (evento) => {
+            if (capituloAtual < 0 || evento.touches.length !== 1) return;
+            if (evento.target.closest("a, input, textarea, select")) return;
+
+            inicioToqueX = evento.touches[0].clientX;
+            inicioToqueY = evento.touches[0].clientY;
+        }, { passive: true });
+
+        document.addEventListener("touchend", (evento) => {
+            if (capituloAtual < 0 || evento.changedTouches.length !== 1) return;
+
+            const fimX = evento.changedTouches[0].clientX;
+            const fimY = evento.changedTouches[0].clientY;
+            const diferencaX = fimX - inicioToqueX;
+            const diferencaY = fimY - inicioToqueY;
+
+            if (Math.abs(diferencaX) < 60 || Math.abs(diferencaX) < Math.abs(diferencaY) * 1.25) {
+                return;
+            }
+
+            if (diferencaX < 0) {
+                avancarCapitulo();
+            } else {
+                voltarCapitulo();
+            }
+        }, { passive: true });
+
+        /* O site sempre começa no tema off-white. */
+        atualizarTema(false);
         atualizarPagina();
     </script>
 
